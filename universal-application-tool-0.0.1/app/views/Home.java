@@ -18,6 +18,9 @@ import static j2html.TagCreator.div;
 import j2html.tags.Tag;
 import j2html.tags.ContainerTag;
 
+import j2html.tags.specialized.HtmlTag;
+import j2html.tags.specialized.H1Tag;
+
 import play.twirl.api.Content;
 
 public class Home {
@@ -26,7 +29,7 @@ public class Home {
     return head().with(title("Toy Play aPpLiCAtIonzZ"));
   }
 
-  private static Tag renderH1() {
+  private static H1Tag renderH1() {
     return h1("This is A TOY PLay AppAlLicastionz");
   }
 
@@ -34,15 +37,18 @@ public class Home {
     return body().with(renderH1());
   }
 
+  private static HtmlTag renderHtml() {
+    return html().with(renderHead(), renderBody());
+  }
+
   public static Content render() {
-    ContainerTag htmlContainer = new ContainerTag("html").with(renderHead(), renderBody());
-    return new HtmlBundleContent(htmlContainer);
+    return new HtmlBundleContent(renderHtml());
   }
 
   private static class HtmlBundleContent implements Content {
-    ContainerTag bundleContent;
+    HtmlTag bundleContent;
 
-    public HtmlBundleContent(ContainerTag bundleContent) {
+    public HtmlBundleContent(HtmlTag bundleContent) {
       this.bundleContent = bundleContent;
     }
 
