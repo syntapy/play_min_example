@@ -23,16 +23,20 @@ import play.twirl.api.Content;
 public class Home {
 
   private static ContainerTag renderHead() {
-      return head().with(title("Toy Play aPpLiCAtIonzZ"));
+    return head().with(title("Toy Play aPpLiCAtIonzZ"));
+  }
+
+  private static Tag renderH1() {
+    return h1("This is A TOY PLay AppAlLicastionz");
   }
 
   private static ContainerTag renderBody() {
-      return body().with(h1("This is A TOY PLay AppAlLicastionz"));
+    return body().with(renderH1());
   }
 
   public static Content render() {
-      ContainerTag htmlContainer = new ContainerTag("html").with(renderHead(), renderBody());
-      return new HtmlBundleContent(htmlContainer);
+    ContainerTag htmlContainer = new ContainerTag("html").with(renderHead(), renderBody());
+    return new HtmlBundleContent(htmlContainer);
   }
 
   private static class HtmlBundleContent implements Content {
