@@ -1,0 +1,8 @@
+#! /usr/bin/env bash
+
+# DOC: Purge S3 bucket in localstack.
+
+source bin/lib.sh
+source bin/localstack/lib.sh
+
+localstack::run_command "s3 rm s3://civiform-local-s3/ --recursive"

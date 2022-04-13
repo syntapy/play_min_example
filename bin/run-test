@@ -1,0 +1,10 @@
+#! /usr/bin/env bash
+
+# DOC: Run the Java test suite in Docker.
+
+source bin/lib.sh
+
+bin/pull-image
+
+docker::ensure_unit_test_env
+docker::run_dev_sbt_command test

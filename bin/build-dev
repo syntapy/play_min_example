@@ -1,0 +1,19 @@
+#! /usr/bin/env bash
+
+# DOC: Build a new development docker image and push to Docker Hub.
+
+source bin/lib.sh
+
+# Build the new development image.
+docker build \
+  -t civiform-dev \
+  --cache-from civiform/civiform-browser-test:latest \
+  --build-arg BUILDKIT_INLINE_CACHE=1 \
+  .
+
+docker::do_dockerhub_login
+
+docker tag civiform-dev:latest civiform/civiform-dev:latest
+
+# Push the new image to the Docker Hub registry.
+docker push civiform/civiform-dev:latest

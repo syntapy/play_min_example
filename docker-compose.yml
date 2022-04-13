@@ -1,0 +1,42 @@
+# Use postgres/example user/password credentials
+version: '3.1'
+
+services:
+
+  helloworld:
+    image: civiform-dev
+    restart: always
+    container_name: civiform
+    ports:
+      - 9900:9000
+    environment:
+      - AWS_ACCESS_KEY_ID=${AWS_ACCESS_KEY_ID:-test}
+      - AWS_SECRET_ACCESS_KEY=${AWS_SECRET_ACCESS_KEY:-test}
+      - AWS_SESSION_TOKEN=${AWS_SESSION_TOKEN:-test}
+      - AWS_REGION
+      - AWS_SES_SENDER
+      - AWS_S3_BUCKET_NAME
+      - AZURE_CLIENT_ID=${AZURE_CLIENT_ID:-test}
+      - AZURE_LOCAL_CONNECTION_STRING
+      - AZURE_STORAGE_ACCOUNT_NAME
+      - AZURE_STORAGE_ACCOUNT_CONTAINER
+      - STORAGE_SERVICE_NAME
+      - LOGIN_RADIUS_API_KEY
+      - LOGIN_RADIUS_METADATA_URI
+      - LOGIN_RADIUS_SAML_APP_NAME
+      - LOGIN_RADIUS_PRIVATE_KEY_PASS
+      - LOGIN_RADIUS_KEYSTORE_PASS
+      - LOGIN_RADIUS_KEYSTORE_NAME
+      - CIVIFORM_APPLICANT_IDP
+      - CIVIFORM_ADMIN_IDP 
+      - IDCS_CLIENT_ID
+      - IDCS_SECRET
+      - ADFS_CLIENT_ID
+      - ADFS_SECRET
+      - CF_OPTIONAL_QUESTIONS
+      - WHITELABEL_SMALL_LOGO_URL
+      - WHITELABEL_LOGO_WITH_NAME_URL
+      - WHITELABEL_CIVIC_ENTITY_SHORT_NAME
+      - WHITELABEL_CIVIC_ENTITY_FULL_NAME
+
+    command: -jvm-debug "*:8457" ~run -Dconfig.file=conf/application.dev.conf
