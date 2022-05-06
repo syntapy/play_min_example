@@ -3,10 +3,10 @@ version: '3.1'
 
 services:
 
-  helloworld:
-    image: civiform-dev
+  play_example:
+    image: play_minexample
     restart: always
-    container_name: civiform
+    container_name: play_minexample_cntr
     ports:
       - 9900:9000
     environment:

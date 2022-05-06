@@ -3,7 +3,7 @@ version: '3.1'
 
 services:
 
-  helloworld:
+  play_example:
     build: .
     volumes:
       - ./server:/usr/src/server
