@@ -9,7 +9,7 @@ lazy val root = (project in file("."))
       // Test Database
       "com.h2database" % "h2" % "1.4.199",
       // Templating
-      "com.j2html" % "j2html" % "1.5.0",
+      "com.j2html" % "j2html" % "1.4.0",
       // Testing libraries for dealing with CompletionStage...
       "org.assertj" % "assertj-core" % "3.14.0" % Test,
       "org.awaitility" % "awaitility" % "4.0.1" % Test,
