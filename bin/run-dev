@@ -62,7 +62,7 @@ docker::set_network_name_dev
 #done &
 
 # start everything else
-docker-compose \
+docker compose \
   -f docker-compose.yml \
   -f docker-compose.dev.yml \
   up
