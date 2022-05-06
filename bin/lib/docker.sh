@@ -10,7 +10,7 @@ function docker::run_dev_sbt_command() {
   # Allocate a TTY for better output even though not strictly needed.
   docker run -it --rm \
     --network test-support_default \
-    -v "$(pwd)/universal-application-tool-0.0.1:/usr/src/universal-application-tool-0.0.1" \
+    -v "$(pwd)/server:/usr/src/server" \
     -v "$(pwd)/sbt_cache/coursier:/root/.cache/coursier" \
     -v ~/.sbt:/root/.sbt \
     -v ~/.ivy:/root/.ivy2 \

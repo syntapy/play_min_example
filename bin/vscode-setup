@@ -10,8 +10,8 @@ bin/pull-image
 
 bin/sbt makePom
 
-cp universal-application-tool-0.0.1/target/scala-*/*.pom \
-    universal-application-tool-0.0.1/pom.xml
+cp server/target/scala-*/*.pom \
+    server/pom.xml
 
 BUILD=$(cat <<END
 <build>
@@ -31,8 +31,8 @@ BUILD=$(cat <<END
     <modelVersion>
 END
 )
-cp universal-application-tool-0.0.1/pom.xml \
-    universal-application-tool-0.0.1/pom.bkp
+cp server/pom.xml \
+    server/pom.bkp
 
 perl -i -pe "s|<modelVersion>|${BUILD}|g" \
-    universal-application-tool-0.0.1/pom.xml
+    server/pom.xml
