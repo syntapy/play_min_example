@@ -14,6 +14,7 @@ import static j2html.TagCreator.document;
 import static j2html.TagCreator.h1;
 import static j2html.TagCreator.p;
 import static j2html.TagCreator.div;
+import static j2html.TagCreator.span;
 
 import j2html.tags.Tag;
 import j2html.tags.ContainerTag;
@@ -22,15 +23,17 @@ import play.twirl.api.Content;
 
 public class Home {
 
-  private static ContainerTag renderHead() {
-    return head().with(title("Toy Play aPpLiCAtIonzZ"));
+  private static Tag renderHead() {
+    Tag divTag = div();
+    Tag spanTag = span("Toy Play application");
+    return head().with(title(divTag.with(spanTag)));
   }
 
   private static Tag renderH1() {
-    return h1("This is A TOY PLay AppAlLicastionz");
+    return h1("this is a toy play appallicastionz");
   }
 
-  private static ContainerTag renderBody() {
+  private static Tag renderBody() {
     return body().with(renderH1());
   }
 
