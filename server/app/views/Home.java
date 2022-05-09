@@ -19,18 +19,29 @@ import static j2html.TagCreator.span;
 import j2html.tags.Tag;
 import j2html.tags.ContainerTag;
 
+import j2html.tags.specialized.DivTag;
+import j2html.tags.specialized.HtmlTag;
+import j2html.tags.specialized.HeadTag;
+
 import play.twirl.api.Content;
 
 public class Home {
 
-  private static Tag renderHead() {
+  private static HeadTag renderHead() {
+    return head().with(title("Toy Play APP"));
+  }
+
+  private static Tag getDivTag() {
     Tag divTag = div();
-    Tag spanTag = span("Toy Play application");
-    return head().with(title(divTag.with(spanTag)));
+
+    return divTag;
   }
 
   private static Tag renderH1() {
-    return h1("this is a toy play appallicastionz");
+    Tag spanTag = span("Toy PLAY application");
+    DivTag divTag = (DivTag) getDivTag();
+    divTag.with(spanTag);
+    return h1().with(divTag);
   }
 
   private static Tag renderBody() {
@@ -38,14 +49,14 @@ public class Home {
   }
 
   public static Content render() {
-    ContainerTag htmlContainer = new ContainerTag("html").with(renderHead(), renderBody());
+    HtmlTag htmlContainer = html().with(renderHead(), renderBody());
     return new HtmlBundleContent(htmlContainer);
   }
 
   private static class HtmlBundleContent implements Content {
-    ContainerTag bundleContent;
+    HtmlTag bundleContent;
 
-    public HtmlBundleContent(ContainerTag bundleContent) {
+    public HtmlBundleContent(HtmlTag bundleContent) {
       this.bundleContent = bundleContent;
     }
 
