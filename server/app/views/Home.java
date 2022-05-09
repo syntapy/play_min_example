@@ -34,6 +34,8 @@ public class Home {
   private static Tag getDivTag() {
     Tag divTag = div();
 
+    divTag.with(div("Hello"));
+
     return divTag;
   }
 
