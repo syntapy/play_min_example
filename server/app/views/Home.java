@@ -31,22 +31,22 @@ public class Home {
     return head().with(title("Toy Play APP"));
   }
 
-  private static Tag getDivTag() {
-    Tag divTag = div();
+  private static ContainerTag getDivTag() {
+    ContainerTag divTag = div();
 
     divTag.with(div("Hello"));
 
     return divTag;
   }
 
-  private static Tag renderH1() {
+  private static ContainerTag renderH1() {
     Tag spanTag = span("Toy PLAY application");
-    DivTag divTag = (DivTag) getDivTag();
+    ContainerTag divTag = getDivTag();
     divTag.with(spanTag);
     return h1().with(divTag);
   }
 
-  private static Tag renderBody() {
+  private static ContainerTag renderBody() {
     return body().with(renderH1());
   }
 
